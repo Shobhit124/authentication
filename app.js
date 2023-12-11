@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const app = express();
-const session = require("express-session");
+const session = require('cookie-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -25,7 +25,8 @@ app.use(session({
   app.use(passport.initialize());
   app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1:27017/userDB", {useNewUrlParser: true});
+// mongoose.connect("mongodb://127.0.0.1:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb://0.0.0.0:27017/userDB", {useNewUrlParser: true});
 
 const userSchema = new mongoose.Schema ({
     email: String,
