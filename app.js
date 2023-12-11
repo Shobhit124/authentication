@@ -72,7 +72,7 @@ app.get("/", function(req, res){
 });
 // google
 app.get("/auth/google", 
-    passport.authenticate('google', { scope: ["profile"] })
+    passport.authenticate('google', { scope: ["profile"], prompt: "select_account", state: true })
 );
 
 app.get("/auth/google/secrets", 
